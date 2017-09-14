@@ -27,21 +27,27 @@ using namespace std;
 class TicTacToe
 {
 	private:
+
 		int boardArr[3][3];
 		string player1;
 		string player2;
-		bool gameState;
 		int winner;
+		
 
 	public:
 		TicTacToe();
 		void showBoard();
+		void moveMenu();
+		void nameSetUp();
+		void showWinner();
+		void startMenu();
 		bool makeMove(int, int, int);
 		bool setPlayer1(string);
 		bool setPlayer2(string);
-		int gameWinner();
-		bool gameOver();
 		string getPlayer1();
 		string getPlayer2();
+		int gameWinner();
+		int checkGame();
+
 };
 #endif
