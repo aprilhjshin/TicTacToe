@@ -32,22 +32,22 @@ class TicTacToe
 		string player1;
 		string player2;
 		int winner;
-		
+		bool setPlayer1(string);
+		bool setPlayer2(string);
+		string getPlayer1()const;
+		string getPlayer2()const;
+		void nameSetUp();
+		void moveMenu();
+		void showBoard();
+		bool makeMove(int, int, int);
+		int checkGame();
+		int gameWinner();
+		void showWinner();
 
 	public:
 		TicTacToe();
-		void showBoard();
-		void moveMenu();
-		void nameSetUp();
-		void showWinner();
 		void startMenu();
-		bool makeMove(int, int, int);
-		bool setPlayer1(string);
-		bool setPlayer2(string);
-		string getPlayer1();
-		string getPlayer2();
-		int gameWinner();
-		int checkGame();
+
 
 };
 #endif

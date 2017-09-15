@@ -9,6 +9,7 @@ Homework 1
 using namespace std;
 
 // default constructor to initialize the board array to zeroes
+// initialize private winner variable to zero for program to run
 TicTacToe::TicTacToe()
 {
 
@@ -23,9 +24,9 @@ TicTacToe::TicTacToe()
 	winner = 0;
 }
 
+//private showBoard function to display the board
 void TicTacToe::showBoard()
 {
-	//enum choice { X = 1, O = 2 };
 	cout << "	Column\n       1  2  3" << endl ;
 	for (int i = 0; i < 3; i++)
 	{
@@ -39,9 +40,10 @@ void TicTacToe::showBoard()
 	}
 }
 
+// function to make a move
+//the player that is moving, the row and column that was chosen to insert their move
 bool TicTacToe::makeMove(int player, int row, int col)
 {
-	//enum choice { X = 1, O = 2 };
 	bool posStatus;
 
 	if (boardArr[row-1][col-1] == 0)
@@ -58,9 +60,10 @@ bool TicTacToe::makeMove(int player, int row, int col)
 	return posStatus;
 }
 
-// checks if anyone won and returns winner
+// checks for win or draw
 int TicTacToe::checkGame()
 {
+	int zeroes = 0;
 	if (boardArr[0][0] == boardArr[1][1] && boardArr[1][1] == boardArr[2][2])
 	{
 		if (boardArr[0][0] == 1)
@@ -118,7 +121,6 @@ int TicTacToe::checkGame()
 			}
 		}
 	}
-	int zeroes = 0;
 	for (int i = 0; i < 3; i++)
 	{
 		for (int j = 0; j < 3; j++)
@@ -163,12 +165,12 @@ int TicTacToe::gameWinner()
 }
 
 
-string TicTacToe::getPlayer1()
+string TicTacToe::getPlayer1()const
 {
 	return player1;
 }
 
-string TicTacToe::getPlayer2()
+string TicTacToe::getPlayer2()const
 {
 	return player2;
 }
@@ -178,8 +180,9 @@ void TicTacToe::moveMenu()
 	int a, b;
 	for (int i = 1; i < 3; i++)
 	{
-		cout << "Player " << i << ", make your move! Enter row and column." << endl;
 		showBoard();
+		cout << "\nPlayer " << i << ", make your move! Enter row and press enter, "
+			<<"enter column and press enter." << endl;
 		cin >> a;
 		cin.ignore();
 		cin >> b;
@@ -199,7 +202,6 @@ void TicTacToe::moveMenu()
 		}
 	}
 }
-
 void TicTacToe::nameSetUp()
 {
 	string name;
@@ -217,7 +219,6 @@ void TicTacToe::nameSetUp()
 		cin.ignore();
 	}
 }
-
 void TicTacToe::showWinner()
 {
 	if (gameWinner() == 1)
@@ -233,12 +234,9 @@ void TicTacToe::showWinner()
 		cout << "draw!!!!!!!!!" << endl;
 	}
 }
-
 void TicTacToe::startMenu()
 {
 	char selection;
-
-
 	do
 	{
 		cout << "Welcome to the Tic Tac Toe Game! Would you like to play? Y for yes, N for no." << endl;
@@ -248,18 +246,14 @@ void TicTacToe::startMenu()
 
 		if (selection == 'Y')
 		{
-
 			nameSetUp();
 
 			while (checkGame() == 0)
 			{
 				moveMenu();
 			}
-
 			showWinner();
-
 		}
-
 		cout << "Would you like to run the program again? Y for yes, N for no" << endl;
 		cin >> selection;
 		selection = toupper(selection);
