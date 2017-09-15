@@ -137,13 +137,13 @@ int TicTacToe::checkGame()
 	}
 	return winner;
 }
-
+//set player1 name
 bool TicTacToe::setPlayer1(string name)
 {
 	player1 = name;
 	return true;
 }
-
+//set player2 name is the name is taken return false
 bool TicTacToe::setPlayer2(string name)
 {
 	if (name != player1)
@@ -156,28 +156,23 @@ bool TicTacToe::setPlayer2(string name)
 		return false;
 	}
 }
-
-
+//function to return winner or draw
 int TicTacToe::gameWinner()
 {
-
 	return winner;
 }
-
-
 string TicTacToe::getPlayer1()const
 {
 	return player1;
 }
-
 string TicTacToe::getPlayer2()const
 {
 	return player2;
 }
-
 void TicTacToe::moveMenu()
 {
 	int a, b;
+	//a loop to have the players' moves alternate
 	for (int i = 1; i < 3; i++)
 	{
 		showBoard();
@@ -193,11 +188,13 @@ void TicTacToe::moveMenu()
 			i--;
 		}
 		if (makeMove(i, a, b) == true)
+			// this block never gets executed but i dont know why
 		{
 
 		}
 		if (checkGame() != 0)
 		{
+			// set i to a number bigger than 2 so that it will exit the loop
 			i = 10;
 		}
 	}
@@ -224,30 +221,38 @@ void TicTacToe::showWinner()
 	if (gameWinner() == 1)
 	{
 		cout << "Congratulations! " << getPlayer1() << ", you are the winner!" << endl;
+		showBoard();
 	}
 	else if (gameWinner() == 2)
 	{
 		cout << "Congratulations! " << getPlayer2() << ", you are the winner!" << endl;
+		showBoard();
 	}
 	else if (gameWinner() == 3)
 	{
-		cout << "draw!!!!!!!!!" << endl;
+		cout << "This game is a draw!" << endl;
+		showBoard();
 	}
 }
 void TicTacToe::startMenu()
 {
 	char selection;
-	do
+	cout << "Welcome to the Tic Tac Toe Game! Would you like to play? Y for yes, N for no." << endl;
+	cin >> selection;
+	selection = toupper(selection);
+	cin.ignore();
+	while (selection != 'Y' && selection != 'N')
 	{
-		cout << "Welcome to the Tic Tac Toe Game! Would you like to play? Y for yes, N for no." << endl;
+		cout << "Invalid input! Enter Y for yes or N for no!" << endl;
 		cin >> selection;
 		selection = toupper(selection);
 		cin.ignore();
-
+	}
+	do
+	{
 		if (selection == 'Y')
 		{
 			nameSetUp();
-
 			while (checkGame() == 0)
 			{
 				moveMenu();
@@ -259,5 +264,4 @@ void TicTacToe::startMenu()
 		selection = toupper(selection);
 		cin.ignore();
 	} while (selection != 'N');
-
 }

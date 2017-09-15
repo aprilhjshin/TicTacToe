@@ -9,14 +9,23 @@ Homework 1
 	-boardArr     : int[3][3]
 	-player1      : string
 	-player2      : string
+	-winner       : int
+
 ----------------------------------------------------------------------------------------
 	+TicTacToe()
-	+showBoard() : void
-	+makeMove(playerNum : int, row : int, column : int) : bool
-	+setPlayer1(name : string)
-	+setPlayer2(name : string)
-	+getPlayer1(name : string)
-	+getPlayer1(name : string)
+	+startMenu() : void
+	-nameSetUp() : void
+	-moveMenu() : void
+	-setPlayer1(name : string) : bool
+	-setPlayer2(name : string) : bool
+	-getPlayer1(name : string) : string
+	-getPlayer1(name : string) : string
+	-showBoard() : void
+	-checkGame() : int
+	-gameWinner() : int
+	-showWinner() : void
+	-makeMove(playerNum : int, row : int, column : int) : bool
+
 */
 
 #ifndef TICTACTOE_H
