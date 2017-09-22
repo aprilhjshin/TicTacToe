@@ -263,5 +263,10 @@ void TicTacToe::startMenu()
 		cin >> selection;
 		selection = toupper(selection);
 		cin.ignore();
+		if (selection == 'Y')
+		{
+			TicTacToe newGame;
+			newGame.startMenu();
+		}
 	} while (selection != 'N');
 }
